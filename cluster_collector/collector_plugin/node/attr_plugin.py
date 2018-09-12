@@ -3,15 +3,15 @@
 # All rights reserved.
 
 
-def collect_disk_size():
+def collect_node():
     info = [
         {
-            '_name': 'num',
+            '_name': 'hostname',
             '_label': {
-                'zh_CN': '磁盘数量'
+                'zh_CN': '节点hostname'
             },
             '_desc': {
-                'zh_CN': '描述磁盘的数量'
+                'zh_CN': '描述节点的hostname'
             },
             '_collect_time': '',
             '_spend_time': '',

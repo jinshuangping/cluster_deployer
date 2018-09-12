@@ -1,0 +1,23 @@
+- hosts: 127.0.0.1
+  gather_facts: no
+  connection: local
+  vars:
+    tmp_file: /tmp/tmp_log_local_collector_{{ task_uuid }}.txt
+  tasks:
+  - name: clean up temp_path
+    shell: "rm -rf {{ temp_path }}/*{{ task_uuid }}*"
+
+
+- hosts: cluster
+  gather_facts: no
+  sudo: yes
+  vars:
+    tmp_file: /tmp/tmp_log_cluster_collector_{{ task_uuid }}.txt
+    start_time: "{{ start_time }}"
+    end_time: "{{ end_time }}"
+    task_uuid: "{{ task_uuid }}"
+    log_path: "{{ log_path }}"
+    send_log_to_controller: "yes"
+  tasks:
+  - name: clean up log_path
+    shell: "rm -rf {{ temp_path }}/*{{ task_uuid }}*"
